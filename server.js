@@ -88,10 +88,10 @@ app.use("/api", router)
 
 var distDir = __dirname + '/dist';
 // handle serving static files
-app.use('/static', express.static(distDir))
+app.use('/', express.static(distDir))
 
 // handle SPA
-app.use('/', function(req, res) {
+app.use(function(req, res) {
   res.sendFile(distDir + '/index.html')
 })
 
