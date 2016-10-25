@@ -1,7 +1,43 @@
 // simple stylinging done via Sass
 $brand-primary: #26b9da;
+$hawkeyBlue: rgb(227, 242, 253);
+
+
+/* I use Susy for CSS grids */
+@import "../bower_components/susy/sass/susy";
+$susy: (
+  columns: 12,
+  container: 1120px, // 70rem
+  global-box-sizing: border-box
+);
 
 body {
-    background-color: $brand-primary;
-    font-family: 'Roboto', sans-serif;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.navigation {
+  color: $brand-primary;
+  background-color: $hawkeyBlue;
+  ul {
+    @include container;
+    margin-top: 0;
+    margin-bottom: 1em;
+    padding: 1em;
+    text-align: right;
+
+    li {
+      display: inline-block;
+      list-style: none;
+      padding-right: 1em;
+    }
+
+  }
+}
+
+.page-content {
+  @include container;
+  padding-left: 1em;
+  padding-right: 1em;
 }

@@ -1,0 +1,20 @@
+{
+  "name": "MeanStackTestProject",
+  "description": "JS support for the interview project",
+  "main": "server.js",
+  "authors": [
+    "Robert Smol <robert.smol@stereoit.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/stereoit/motius-interview",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "susy": "^2.2.12"
+  }
+}
