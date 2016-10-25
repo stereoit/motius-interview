@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+  mongodata:
+    image: tianon/true
+    container_name: mot-data
+    volumes:
+      - /data/db
+  mongo:
+    image: mongo:3.0.4
+    container_name: mot-db
+    ports:
+      - "27017:27017"
+    volumes_from:
+      - mongodata
