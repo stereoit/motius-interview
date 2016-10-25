@@ -5,13 +5,13 @@ MSTP
 MEAN Stack Test Project put's together full stack SPA application.
 
 
-Setup
------
+Setup and running
+-----------------
 
- - clone from github
- - docker-compose up
- - seed data into mongo
- - access page at localhost:8080
+     $ git clone git@github.com:stereoit/motius-interview.git
+     $ cd motius-interview
+     $ docker-compose up # in another window run seed the initial data (see bellow)
+     $ curl localhost:8080/api/usecases
 
 
 Architecture
@@ -39,4 +39,4 @@ Seeding initial data
 In order to populate the MongoDB instance, run those two commands
 
     $ docker cp Specification/Usecasedata.json mot-db:/
-    $ mongoimport  --db test --collection usecases  --type json  --file /Usecasedata.json --jsonArray
+    $ docker exec mot-db mongoimport  --db test --collection usecases  --type json  --file /Usecasedata.json --jsonArray

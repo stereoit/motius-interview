@@ -1,0 +1,18 @@
+{
+  "name": "MeanStackTestProject",
+  "version": "1.0.0",
+  "description": "JS support for the interview project",
+  "main": "server.js",
+  "private": true,
+  "repository": {
+    "url": "git@github.com:stereoit/motius-interview.git",
+    "type": "git"
+  },
+  "author": "Robert Smol <robert.smol@stereoit.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.5"
+  }
+}
