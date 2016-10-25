@@ -86,6 +86,15 @@ router.route("/usecases/:usecase_id")
 
 app.use("/api", router)
 
+var distDir = __dirname + '/dist';
+// handle serving static files
+app.use('/static', express.static(distDir))
+
+// handle SPA
+app.use('/', function(req, res) {
+  res.sendFile(distDir + '/index.html')
+})
+
 // START THE SERVER
 app.listen(port)
 console.log("Application started on port " + port);
