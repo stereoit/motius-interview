@@ -18,15 +18,19 @@ var Usecase = require('./app/models/usecase');
 // API routes (e.g. /api/usecases or /api/usecases/:usecase_id)
 var router = express.Router()
 
-router.get("/", function(req, res) {
-  res.json({ data: []})
-})
-
 // on routes that ends with /usecases
 router.route("/usecases")
   // create usecase
   .post(function(req, res) {
-    res.json({error: "Not implemented yet"})
+    var usecase = new Usecase()
+    usecase.title = req.body.title
+
+    usecase.save(function(err){
+      if (err)
+        res.send({error: err})
+
+      res.json({ message: 'Usecase created!'})
+    })
   })
 
   // get all usecases
