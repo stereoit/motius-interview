@@ -14,7 +14,7 @@
     "prestart": "npm run clean-and-copy",
     "start": "webpack-dev-server --env.dev --content-base dist --history-api-fallback --host 0.0.0.0",
     "stylesheets": "node-sass --include-path stylesheets stylesheets/main.scss   dist/css/main.css",
-    "prebuild": "npm run clean-and-copy",
+    "prebuild": "npm run clean-and-copy && npm run stylesheets",
     "build": "webpack --env.prod -p"
   },
   "author": "Robert Smol <robert.smol@stereoit.com>",
