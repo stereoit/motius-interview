@@ -16,13 +16,6 @@ import NoMatch from './components/NoMatch';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-
-const Usecase = ({props}) => {
-  return (
-    <UsecaseCard />
-  )
-}
-
 const routes =
   <Route path="/" component={AppContainer}>
     <IndexRoute component={UsecaseList} />

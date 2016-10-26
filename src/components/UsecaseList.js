@@ -5,13 +5,15 @@ const UsecaseList = ({usecases, loading}) => {
   return (
     <div>
       <h1>Available usecases</h1>
+      <div className="usecase-list">
       { loading ?
           <div className="loader">Loading....</div>
           :
           usecases.map( usecase =>
-            <UsecaseCard usecase={usecase} />
+            <UsecaseCard key={usecase._id} usecase={usecase} />
           )
       }
+      </div>
     </div>
   )
 }

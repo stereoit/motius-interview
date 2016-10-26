@@ -43,7 +43,6 @@ class AppContainer extends Component {
   componentDidMount() {
     fetch('/api/usecases').then( response => {
       return response.json().then( usecases => {
-        console.log("REPLY: ", usecases);
         this.setState({
           usecases: usecases,
           loading: false

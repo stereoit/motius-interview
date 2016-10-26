@@ -41,3 +41,12 @@ body {
   padding-left: 1em;
   padding-right: 1em;
 }
+
+$tablet: 768px;
+
+.usecase-card {
+  margin-bottom: gutter();
+  @media screen and (min-width: $tablet) {
+    @include gallery(4 of 12);
+  }
+}
