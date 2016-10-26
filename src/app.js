@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import { browserHistory, Router, Route, IndexRoute, Link } from 'react-router'
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 
+import AppContainer from './containers/AppContainer';
+import UsecaseList from './components/UsecaseList';
 import UsecaseCard from './components/UsecaseCard';
+import AddUsecase from './components/AddUsecase';
 import NoMatch from './components/NoMatch';
 
 
@@ -15,46 +17,15 @@ import NoMatch from './components/NoMatch';
 injectTapEventPlugin();
 
 
-const AppLayout = ({children}) => (
-  <MuiThemeProvider>
-    <div>
-      <div className="navigation">
-        <ul>
-          <li><Link to="/">Usecases</Link></li>
-          <li><Link to="/addUsecase">+Add</Link></li>
-        </ul>
-      </div>
-      <div className="page-content">
-        {children}
-      </div>
-    </div>
-  </MuiThemeProvider>
-);
-
-const Home = ({props}) => (
-  <div>
-    <h1>Available usecases</h1>
-  </div>
-);
-
 const Usecase = ({props}) => {
   return (
     <UsecaseCard />
   )
 }
 
-const AddUsecase = ({props}) => {
-  return (
-    <div>
-    <h1>Add new usecase</h1>
-    </div>
-  )
-}
-
-
 const routes =
-  <Route path="/" component={AppLayout}>
-    <IndexRoute component={Home} />
+  <Route path="/" component={AppContainer}>
+    <IndexRoute component={UsecaseList} />
     <Route path="addUsecase" component={AddUsecase} />
     <Route path="*" component={NoMatch} />
   </Route>
