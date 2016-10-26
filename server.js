@@ -24,6 +24,8 @@ router.route("/usecases")
   .post(function(req, res) {
     var usecase = new Usecase();
     usecase.title = req.body.title;
+    usecase.body = req.body.body;
+    usecase.milestones = req.body.milestones;
 
     usecase.save(function(err){
       if (err)
