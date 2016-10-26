@@ -34,7 +34,7 @@ Setup and running
     $ docker-compose up
     # in another window run seed the initial data (see bellow)
     $ env PORT=8080 node server.js
-    $ chrome localhost:8080
+    $ google-chrome localhost:8080
 
 
 Architecture
