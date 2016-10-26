@@ -9,8 +9,8 @@ const UsecaseList = ({usecases, loading}) => {
       { loading ?
           <div className="loader">Loading....</div>
           :
-          usecases.map( usecase =>
-            <UsecaseCard key={usecase._id} usecase={usecase} />
+          usecases.map( (usecase,idx) =>
+            <UsecaseCard key={idx} usecase={usecase} />
           )
       }
       </div>

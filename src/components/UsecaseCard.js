@@ -28,7 +28,7 @@ class UsecaseCard extends Component {
         <CardText expandable={true}>
           Show milestones here
         </CardText>
-        { usecase.milestones.length ?
+        { usecase.milestones &&  usecase.milestones.length ?
           <CardActions>
             <FlatButton label={expanded ? "Hide milestones" : "Show milestones" } onClick={this.toggleShowMilestones} />
           </CardActions>

@@ -15,13 +15,7 @@ class AppContainer extends Component {
     }
 
     this.addUsecase = this.addUsecase.bind(this)
-  }
-
-  // send data to backend server
-  // on success the server will return new Usecase
-  // then set state to rerender new data
-  addUsecase(usecase) {
-      console.log("Adding new usecase ", usecase);
+    this.fetchUsecases = this.fetchUsecases.bind(this)
   }
 
   // renders children and add several props to it
@@ -39,8 +33,25 @@ class AppContainer extends Component {
     })
   }
 
-  /* load the Usecases from remote */
-  componentDidMount() {
+  // send data to backend server
+  // on success the server will return new Usecase
+  // then set state to rerender new data
+  addUsecase(usecase) {
+      // console.log("Adding new usecase ", JSON.stringify(usecase, null, 4));
+      let {router} = this.props
+
+      // sanity checks on provided model
+      usecase.milestones = usecase.milestones || []
+
+      this.storeUsecase(usecase)
+
+      // show index page
+      router.push("/")
+  }
+
+
+  // load the Usecases from remote
+  fetchUsecases() {
     fetch('/api/usecases').then( response => {
       return response.json().then( usecases => {
         this.setState({
@@ -49,6 +60,31 @@ class AppContainer extends Component {
         })
       });
     });
+  }
+
+  // Store one usecase on the server
+  storeUsecase(usecase) {
+    // console.log("Storing usecase: ", usecase);
+    let fetchUsecases = this.fetchUsecases
+
+    this.setState({loading: true})
+
+    fetch("/api/usecases/",  {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify(usecase)
+    })
+    .then(function(res){
+      fetchUsecases()
+    })
+    .catch(function(res){ console.log(res) })
+  }
+
+  componentDidMount() {
+    this.fetchUsecases()
   }
 
   render() {
