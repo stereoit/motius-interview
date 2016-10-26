@@ -1,9 +1,13 @@
 const {resolve} = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = env => {
   return {
-    entry: './app.js',
+    entry: {
+      app: './app.js',
+      vender: ['react', 'formsy-react', 'formsy-material-ui'],
+    },
     output: {
         path: resolve(__dirname, 'dist'),
         filename: '[name].bundle.[chunkhash].js',
@@ -21,12 +25,8 @@ module.exports = env => {
     },
     plugins:[
       new HtmlWebpackPlugin({ template: './index.html' }),
-      new webpack.optimize.UglifyJsPlugin(),
-      new webpack.optimize.DedupePlugin(),
-      new webpack.DefinePlugin({
-          'process.env': {
-              'NODE_ENV': JSON.stringify('production')
-          }
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vender'
       })
     ],
     devServer: {
