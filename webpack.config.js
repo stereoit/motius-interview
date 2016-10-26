@@ -20,7 +20,14 @@ module.exports = env => {
       ]
     },
     plugins:[
-      new HtmlWebpackPlugin({ template: './index.html' })
+      new HtmlWebpackPlugin({ template: './index.html' }),
+      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.DefinePlugin({
+          'process.env': {
+              'NODE_ENV': JSON.stringify('production')
+          }
+      })
     ],
     devServer: {
       proxy: {
